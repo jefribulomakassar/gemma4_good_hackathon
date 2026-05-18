@@ -1,0 +1,79 @@
+{
+  "common": {
+    "offline_banner": "Anda sedang offline — AI tetap berfungsi",
+    "back": "← Kembali",
+    "exit": "← Keluar",
+    "title": "PuskesmasAI",
+    "symptoms_placeholder": "Contoh: demam 3 hari, bintik merah di kulit, mual, tidak nafsu makan..."
+  },
+  "home": {
+    "subtitle": "Asisten triase AI untuk kader Puskesmas",
+    "start_triage": "Mulai Triase Pasien",
+    "history": "Riwayat",
+    "reference": "Referensi",
+    "offline_note": "Bekerja sepenuhnya tanpa internet setelah instalasi pertama"
+  },
+  "triage": {
+    "title": "Triase Pasien",
+    "age": "Usia Pasien",
+    "age_placeholder": "Contoh: 32",
+    "sex": "Jenis Kelamin",
+    "male": "Laki-laki",
+    "female": "Perempuan",
+    "symptoms": "Keluhan & Gejala",
+    "symptoms_placeholder": "Contoh: demam 3 hari, sakit kepala, mual, bintik merah di kulit...",
+    "temperature": "Suhu (°C)",
+    "blood_pressure": "Tekanan Darah",
+    "analyze": "Analisis Sekarang",
+    "analyzing": "Menganalisis...",
+    "start_voice": "Mulai input suara",
+    "stop_voice": "Hentikan input suara",
+    "error_age": "Masukkan usia yang valid (0–120)",
+    "error_sex": "Pilih jenis kelamin",
+    "error_symptoms": "Jelaskan gejala minimal 5 karakter",
+    "error_generic": "Terjadi kesalahan. Coba lagi."
+  },
+  "result": {
+    "title": "Hasil Triase",
+    "confidence": "keyakinan",
+    "possible_conditions": "Kemungkinan Penyakit",
+    "immediate_actions": "Tindakan Segera",
+    "red_flags": "Tanda Bahaya",
+    "generate_referral": "Buat Surat Rujukan",
+    "new_patient": "Pasien Baru",
+    "referral_note": "Surat Rujukan"
+  },
+  "history": {
+    "title": "Riwayat Pasien",
+    "records": "data",
+    "loading": "Memuat data...",
+    "empty": "Belum ada riwayat triase",
+    "start_first": "Mulai Triase Pertama",
+    "years": "thn",
+    "male": "L",
+    "female": "P",
+    "unsynced": "Belum tersinkron"
+  },
+  "reference": {
+    "title": "Referensi Medis",
+    "search_placeholder": "Cari penyakit...",
+    "loading": "Memuat referensi...",
+    "no_results": "Penyakit tidak ditemukan",
+    "symptoms": "Gejala",
+    "immediate_actions": "Tindakan",
+    "refer_when": "Rujuk Jika",
+    "drugs": "Obat",
+    "offline_unavailable": "Referensi belum tersedia offline. Sambungkan internet sekali untuk mengunduh.",
+    "back": "← Kembali"
+  },
+  "referral": {
+    "triage_result": "Hasil Triase",
+    "possible_conditions": "Kemungkinan Diagnosis",
+    "actions_taken": "Tindakan yang Dilakukan",
+    "red_flags": "Tanda Bahaya",
+    "generated_by": "Dibuat oleh",
+    "disclaimer_short": "Alat bantu keputusan — bukan pengganti dokter",
+    "copy": "Salin",
+    "print": "Cetak"
+  }
+}
