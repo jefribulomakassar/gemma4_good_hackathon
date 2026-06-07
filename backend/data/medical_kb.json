@@ -1,0 +1,422 @@
+{
+  "version": "1.0.0",
+  "last_updated": "2026-06-07",
+  "language": "id",
+  "description": "Basis pengetahuan medis offline untuk 10 penyakit utama di wilayah pedesaan Indonesia",
+  "diseases": [
+    {
+      "id": "DBD",
+      "name": "Demam Berdarah Dengue (DBD)",
+      "icd10": "A90",
+      "triage_default": "ORANGE",
+      "symptoms": [
+        "demam tinggi mendadak 38-40°C",
+        "sakit kepala berat",
+        "nyeri di belakang mata",
+        "nyeri otot dan sendi",
+        "bintik merah di kulit (petechiae)",
+        "mual dan muntah",
+        "nafsu makan menurun",
+        "lemas"
+      ],
+      "red_flags": [
+        "perdarahan dari gusi, hidung, atau kulit",
+        "muntah darah atau BAB hitam",
+        "nyeri perut hebat",
+        "gelisah atau kesadaran menurun",
+        "tangan dan kaki dingin",
+        "sulit bernafas"
+      ],
+      "immediate_actions": [
+        "Berikan minum banyak (oralit atau air putih)",
+        "Kompres hangat jika demam tinggi",
+        "JANGAN berikan aspirin atau ibuprofen",
+        "Paracetamol boleh diberikan untuk demam",
+        "Rujuk ke Puskesmas untuk pemeriksaan darah (trombosit)"
+      ],
+      "home_care": [
+        "Istirahat total",
+        "Minum minimal 2 liter air per hari",
+        "Monitor suhu setiap 4 jam",
+        "Pantau tanda perdarahan"
+      ],
+      "referral_indication": "Segera rujuk jika ada tanda bahaya atau demam hari ke-3 dengan bintik merah",
+      "common_drugs": [],
+      "notes": "DBD paling berbahaya pada hari ke-3 hingga ke-6. Fase kritis ditandai penurunan suhu tiba-tiba."
+    },
+    {
+      "id": "TIFOID",
+      "name": "Demam Tifoid (Tifus)",
+      "icd10": "A01.0",
+      "triage_default": "YELLOW",
+      "symptoms": [
+        "demam naik bertahap, paling tinggi malam hari",
+        "sakit kepala",
+        "lidah kotor (putih di tengah, merah di tepi)",
+        "perut kembung",
+        "mual",
+        "sembelit atau diare",
+        "lemas dan lesu",
+        "demam sudah lebih dari 1 minggu"
+      ],
+      "red_flags": [
+        "perdarahan atau perforasi usus (nyeri perut tiba-tiba sangat hebat)",
+        "kesadaran menurun atau mengigau",
+        "demam sangat tinggi >40°C",
+        "perut sangat keras dan tegang"
+      ],
+      "immediate_actions": [
+        "Rujuk ke Puskesmas untuk tes Widal atau rapid test",
+        "Berikan cairan yang cukup",
+        "Istirahat total",
+        "Hindari makanan pedas dan berserat tinggi"
+      ],
+      "home_care": [
+        "Diet bubur atau makanan lunak",
+        "Istirahat total minimal 2 minggu",
+        "Minum obat sesuai resep dokter sampai habis",
+        "Cuci tangan sebelum makan"
+      ],
+      "referral_indication": "Rujuk untuk konfirmasi diagnosis dan pemberian antibiotik",
+      "common_drugs": ["Paracetamol untuk demam (dosis sesuai berat badan)"],
+      "notes": "Penularan melalui makanan/minuman terkontaminasi feses. Penting: antibiotik harus diminum sampai habis."
+    },
+    {
+      "id": "MALARIA",
+      "name": "Malaria",
+      "icd10": "B54",
+      "triage_default": "ORANGE",
+      "symptoms": [
+        "demam menggigil secara berkala (setiap 2-3 hari)",
+        "berkeringat setelah demam",
+        "sakit kepala berat",
+        "mual dan muntah",
+        "nyeri otot",
+        "lemas",
+        "wajah pucat"
+      ],
+      "red_flags": [
+        "kesadaran menurun atau tidak sadar",
+        "kejang",
+        "nafas cepat dan sesak",
+        "urin berwarna gelap (seperti teh)",
+        "kuning pada mata dan kulit (jaundice)",
+        "tidak bisa minum atau menelan"
+      ],
+      "immediate_actions": [
+        "Rujuk segera ke Puskesmas untuk pemeriksaan RDT malaria",
+        "Berikan cairan oral jika bisa minum",
+        "Jangan tunda rujukan terutama untuk anak dan ibu hamil",
+        "Paracetamol untuk demam sambil menunggu rujukan"
+      ],
+      "home_care": [
+        "Tidur menggunakan kelambu",
+        "Gunakan obat nyamuk",
+        "Minum obat antimalaria sesuai resep sampai habis"
+      ],
+      "referral_indication": "Semua kasus suspek malaria harus dikonfirmasi di Puskesmas",
+      "common_drugs": ["Paracetamol untuk demam (sambil menunggu rujukan)"],
+      "notes": "Endemis di Papua, NTT, Maluku, Kalimantan. Ibu hamil dan anak balita paling berisiko komplikasi berat."
+    },
+    {
+      "id": "ISPA",
+      "name": "Infeksi Saluran Pernapasan Atas (ISPA)",
+      "icd10": "J06.9",
+      "triage_default": "GREEN",
+      "symptoms": [
+        "batuk",
+        "pilek",
+        "hidung tersumbat",
+        "bersin-bersin",
+        "tenggorokan sakit",
+        "demam ringan (<38.5°C)",
+        "suara serak"
+      ],
+      "red_flags": [
+        "nafas cepat (anak <2 bulan: >60x/mnt, 2-12 bulan: >50x/mnt, 1-5 tahun: >40x/mnt)",
+        "tarikan dinding dada ke dalam",
+        "stridor (bunyi saat menarik nafas)",
+        "sianosis (bibir/kuku kebiruan)",
+        "tidak mau minum (pada bayi)",
+        "demam tinggi >39°C lebih dari 3 hari"
+      ],
+      "immediate_actions": [
+        "Jika ada tanda bahaya: SEGERA RUJUK",
+        "Bersihkan hidung dengan larutan garam",
+        "Berikan cairan yang cukup",
+        "Inhalasi uap hangat untuk melegakan pernapasan"
+      ],
+      "home_care": [
+        "Istirahat cukup",
+        "Minum banyak cairan hangat",
+        "Hindari asap rokok dan debu",
+        "ASI eksklusif untuk bayi"
+      ],
+      "referral_indication": "Rujuk jika ada tanda bahaya atau tidak membaik dalam 3 hari",
+      "common_drugs": ["Paracetamol untuk demam dan nyeri tenggorokan"],
+      "notes": "ISPA adalah penyebab kematian balita terbanyak. Pneumonia ditandai nafas cepat + tarikan dinding dada."
+    },
+    {
+      "id": "DIARE",
+      "name": "Diare Akut",
+      "icd10": "A09",
+      "triage_default": "YELLOW",
+      "symptoms": [
+        "BAB cair lebih dari 3 kali sehari",
+        "perut kram atau mulas",
+        "mual",
+        "demam ringan",
+        "lemas"
+      ],
+      "red_flags": [
+        "tanda dehidrasi berat: mata cekung, kulit kering, tidak mau minum, tidak BAK >6 jam",
+        "darah dalam tinja",
+        "muntah terus-menerus tidak bisa minum",
+        "kesadaran menurun",
+        "bayi <6 bulan dengan diare",
+        "diare >14 hari"
+      ],
+      "immediate_actions": [
+        "Berikan oralit: 1 bungkus dicampur 200ml air matang",
+        "Untuk anak: 50-100ml oralit setiap BAB cair",
+        "Lanjutkan ASI dan makan",
+        "Zinc tablet untuk anak (10-20mg selama 10 hari)",
+        "Rujuk segera jika ada tanda dehidrasi berat"
+      ],
+      "home_care": [
+        "Minum oralit sebanyak yang bisa ditoleransi",
+        "Makan makanan lunak seperti bubur",
+        "Cuci tangan dengan sabun",
+        "Jaga kebersihan makanan dan minuman"
+      ],
+      "referral_indication": "Dehidrasi berat, darah dalam tinja, bayi <6 bulan, diare >14 hari",
+      "common_drugs": ["Oralit (tersedia di Puskesmas/Posyandu)", "Zinc tablet untuk anak"],
+      "notes": "Oralit adalah penanganan utama. JANGAN berikan antidiare pada anak tanpa resep dokter."
+    },
+    {
+      "id": "HIPERTENSI",
+      "name": "Hipertensi (Tekanan Darah Tinggi)",
+      "icd10": "I10",
+      "triage_default": "YELLOW",
+      "symptoms": [
+        "sakit kepala terutama di belakang kepala",
+        "pusing",
+        "tengkuk terasa berat",
+        "penglihatan kabur",
+        "jantung berdebar",
+        "tekanan darah >140/90 mmHg"
+      ],
+      "red_flags": [
+        "tekanan darah >180/120 mmHg (krisis hipertensi)",
+        "nyeri dada",
+        "sesak nafas mendadak",
+        "kelemahan atau mati rasa satu sisi tubuh",
+        "gangguan bicara mendadak",
+        "penglihatan tiba-tiba gelap"
+      ],
+      "immediate_actions": [
+        "Ukur tekanan darah",
+        "Istirahatkan pasien dalam posisi duduk atau berbaring",
+        "Jika TD >180/120: SEGERA RUJUK ke IGD",
+        "Hindari aktivitas berat",
+        "Jangan hentikan obat hipertensi tanpa instruksi dokter"
+      ],
+      "home_care": [
+        "Kurangi garam dalam makanan",
+        "Olahraga ringan teratur (jalan kaki 30 menit/hari)",
+        "Hindari rokok dan alkohol",
+        "Kelola stres",
+        "Minum obat hipertensi setiap hari tanpa putus"
+      ],
+      "referral_indication": "TD >180/120, ada gejala kerusakan organ target, atau tidak terkontrol dengan obat",
+      "common_drugs": ["Sesuai resep dokter — TIDAK boleh memberikan obat hipertensi tanpa resep"],
+      "notes": "Hipertensi sering tanpa gejala. Periksa TD rutin di Posyandu/Posbindu sangat penting."
+    },
+    {
+      "id": "TUBERKULOSIS",
+      "name": "Tuberkulosis (TBC/TB)",
+      "icd10": "A15",
+      "triage_default": "YELLOW",
+      "symptoms": [
+        "batuk lebih dari 2 minggu",
+        "batuk berdahak, bisa bercampur darah",
+        "demam ringan terutama sore/malam hari",
+        "berkeringat malam tanpa sebab",
+        "berat badan turun drastis",
+        "nafsu makan menurun",
+        "lemas berkepanjangan",
+        "nyeri dada"
+      ],
+      "red_flags": [
+        "batuk darah banyak",
+        "sesak nafas berat",
+        "kesadaran menurun",
+        "kaku leher (TB meningitis)"
+      ],
+      "immediate_actions": [
+        "Rujuk ke Puskesmas untuk pemeriksaan dahak (TCM/BTA)",
+        "Edukasi etika batuk: tutup mulut dengan siku",
+        "Ventilasi ruangan yang baik",
+        "Isolasi sementara dari anak dan bayi"
+      ],
+      "home_care": [
+        "Minum OAT (Obat Anti Tuberkulosis) setiap hari TANPA PUTUS selama 6 bulan",
+        "Makan bergizi tinggi protein",
+        "Jemur tempat tidur di bawah sinar matahari",
+        "Buka jendela untuk sirkulasi udara"
+      ],
+      "referral_indication": "Semua suspek TB harus dirujuk untuk pemeriksaan dan memulai OAT",
+      "common_drugs": ["OAT diberikan oleh Puskesmas — GRATIS dari pemerintah"],
+      "notes": "TB bisa sembuh total jika OAT diminum teratur 6 bulan. Putus OAT menyebabkan TB resistan obat (MDR-TB)."
+    },
+    {
+      "id": "GIZI_BURUK",
+      "name": "Gizi Buruk / Malnutrisi pada Anak",
+      "icd10": "E43",
+      "triage_default": "ORANGE",
+      "symptoms": [
+        "berat badan sangat kurang (BB/TB <-3 SD)",
+        "LILA (Lingkar Lengan Atas) <11.5 cm pada balita",
+        "tubuh sangat kurus",
+        "perut buncit",
+        "rambut kusam dan mudah rontok",
+        "kulit kering dan bersisik",
+        "bengkak pada kaki dan tangan (kwashiorkor)",
+        "anak tampak apatis"
+      ],
+      "red_flags": [
+        "tidak mau makan/minum sama sekali",
+        "penurunan kesadaran",
+        "demam tinggi",
+        "diare atau muntah bersamaan",
+        "nafas cepat atau sesak",
+        "LILA <11.5 cm dengan komplikasi"
+      ],
+      "immediate_actions": [
+        "Rujuk SEGERA ke Puskesmas atau TFC (Therapeutic Feeding Center)",
+        "Berikan F-75 atau F-100 jika tersedia di Puskesmas",
+        "Jangan berikan makanan padat sebelum stabilisasi",
+        "Cegah hipoglikemia: berikan gula jika anak masih bisa menelan"
+      ],
+      "home_care": [
+        "Pemberian makanan tambahan (PMT) dari Posyandu",
+        "ASI eksklusif untuk bayi <6 bulan",
+        "MPASI bergizi untuk anak >6 bulan",
+        "Stimulasi tumbuh kembang"
+      ],
+      "referral_indication": "Semua gizi buruk dengan atau tanpa komplikasi harus dirujuk ke Puskesmas",
+      "common_drugs": ["Vitamin A", "Zinc", "Oralit jika ada diare"],
+      "notes": "Gizi buruk dengan komplikasi = darurat medis. Pemulihan butuh 6-8 minggu program tatalaksana gizi."
+    },
+    {
+      "id": "DIARE_KOLERA",
+      "name": "Diare Akut Dehidrasi Berat / Kolera",
+      "icd10": "A00",
+      "triage_default": "RED",
+      "symptoms": [
+        "diare sangat cair seperti air cucian beras",
+        "volume sangat banyak",
+        "muntah",
+        "kram otot",
+        "dehidrasi cepat",
+        "mata sangat cekung",
+        "kulit tidak elastis (turgor buruk)"
+      ],
+      "red_flags": [
+        "syok: nadi lemah/tidak teraba, tekanan darah turun",
+        "tidak sadar",
+        "tidak bisa minum sama sekali",
+        "bayi dengan dehidrasi berat"
+      ],
+      "immediate_actions": [
+        "RUJUK DARURAT ke IGD rumah sakit",
+        "Pasang IV line jika terlatih dan peralatan tersedia",
+        "Berikan oralit sebanyak mungkin jika masih bisa menelan",
+        "Laporkan ke Dinas Kesehatan jika ada kluster kasus"
+      ],
+      "home_care": [],
+      "referral_indication": "SELALU rujuk darurat — tidak bisa ditangani di rumah",
+      "common_drugs": ["Oralit sambil menunggu rujukan"],
+      "notes": "Kolera adalah KLB (Kejadian Luar Biasa) — wajib lapor dalam 24 jam ke Puskesmas/Dinkes."
+    },
+    {
+      "id": "PREEKLAMSIA",
+      "name": "Pre-eklampsia / Eklampsia pada Ibu Hamil",
+      "icd10": "O14",
+      "triage_default": "RED",
+      "symptoms": [
+        "ibu hamil dengan tekanan darah ≥140/90 mmHg",
+        "bengkak pada wajah, tangan, dan kaki",
+        "sakit kepala berat",
+        "penglihatan kabur atau berkunang-kunang",
+        "nyeri ulu hati",
+        "protein dalam urin (jika bisa diperiksa)"
+      ],
+      "red_flags": [
+        "kejang pada ibu hamil (eklampsia) — DARURAT ABSOLUT",
+        "tekanan darah ≥160/110 mmHg",
+        "nyeri kepala hebat tidak membaik",
+        "penglihatan mendadak gelap",
+        "gerakan janin berkurang atau tidak ada",
+        "perdarahan"
+      ],
+      "immediate_actions": [
+        "RUJUK DARURAT ke rumah sakit dengan fasilitas persalinan",
+        "Posisikan miring kiri",
+        "Jika kejang: amankan pasien, bebaskan jalan nafas",
+        "MgSO4 jika terlatih dan tersedia (sesuai protokol)",
+        "Catat tekanan darah, nadi, dan kondisi janin"
+      ],
+      "home_care": [],
+      "referral_indication": "SEMUA ibu hamil dengan TD ≥140/90 HARUS segera dirujuk",
+      "common_drugs": ["MgSO4 — hanya oleh tenaga terlatih sesuai protokol PONEK"],
+      "notes": "Pre-eklampsia adalah penyebab utama kematian ibu di Indonesia. TIDAK BOLEH ditangani di rumah."
+    }
+  ],
+  "drug_reference_summary": {
+    "oralit": {
+      "indikasi": "Diare dengan dehidrasi ringan-sedang",
+      "dosis_anak": "50-100ml setiap BAB cair",
+      "dosis_dewasa": "200-400ml setiap BAB cair",
+      "cara_buat": "1 bungkus oralit + 200ml air matang"
+    },
+    "paracetamol": {
+      "indikasi": "Demam dan nyeri",
+      "dosis": "10-15 mg/kg BB setiap 4-6 jam",
+      "dosis_dewasa": "500mg setiap 4-6 jam (maks 4x/hari)",
+      "perhatian": "Jangan melebihi dosis, hindari pada gangguan hati"
+    },
+    "zinc": {
+      "indikasi": "Diare pada anak",
+      "dosis_anak_<6bulan": "10mg per hari selama 10 hari",
+      "dosis_anak_>6bulan": "20mg per hari selama 10 hari"
+    },
+    "vitamin_a": {
+      "indikasi": "Campak, gizi buruk, diare berat",
+      "dosis_bayi_6-11bulan": "100.000 IU dosis tunggal",
+      "dosis_anak_>12bulan": "200.000 IU dosis tunggal"
+    }
+  },
+  "triage_levels": {
+    "GREEN": {
+      "label": "Tidak Mendesak",
+      "color": "#16a34a",
+      "action": "Tangani di rumah dengan panduan kader, kontrol ke Puskesmas jika tidak membaik dalam 3 hari"
+    },
+    "YELLOW": {
+      "label": "Perlu Perhatian",
+      "color": "#ca8a04",
+      "action": "Rujuk ke Puskesmas dalam 24 jam"
+    },
+    "ORANGE": {
+      "label": "Segera",
+      "color": "#ea580c",
+      "action": "Rujuk ke Puskesmas segera hari ini"
+    },
+    "RED": {
+      "label": "Darurat",
+      "color": "#dc2626",
+      "action": "Hubungi ambulans atau bawa ke IGD rumah sakit SEKARANG"
+    }
+  }
+}
