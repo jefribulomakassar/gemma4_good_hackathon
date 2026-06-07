@@ -1,196 +1,424 @@
-// frontend/components/SymptomForm.tsx
-'use client'
+"use client";
 
-import { useState } from 'react'
-import { useRouter } from 'next/navigation'
-import { signRequest } from '@/lib/crypto'
-import { savePatientRecord } from '@/lib/db'
-import VoiceInput from '@/components/VoiceInput'
-import { useTranslations } from 'next-intl'
+import { useState } from "react";
 
-interface FormData {
-  age: string
-  sex: string
-  temp: string
-  symptoms: string
+// ─── Types ───────────────────────────────────────────────────────────────────
+
+export interface SymptomFormData {
+  patient_age: number | "";
+  patient_sex: "laki-laki" | "perempuan" | "";
+  patient_weight?: number | "";
+  is_pregnant?: boolean;
+  symptoms: string;
+  temperature?: number | "";
+  duration_days: number | "";
+  additional_notes?: string;
 }
 
-const INITIAL: FormData = { age: '', sex: '', temp: '', symptoms: '' }
+interface SymptomFormProps {
+  onSubmit: (data: SymptomFormData) => void;
+  isLoading?: boolean;
+}
 
-export default function SymptomForm() {
-  const t = useTranslations('triage')  // ← harus PALING ATAS, sebelum useState
-  const router = useRouter()
-  const [form, setForm] = useState<FormData>(INITIAL)
-  const [loading, setLoading] = useState(false)
-  const [error, setError] = useState('')
+// ─── Constants ───────────────────────────────────────────────────────────────
 
-  const set = (key: keyof FormData) => (
+const SYMPTOM_SHORTCUTS = [
+  "demam tinggi",
+  "batuk",
+  "sesak nafas",
+  "diare",
+  "muntah",
+  "sakit kepala",
+  "nyeri perut",
+  "lemas",
+  "bintik merah",
+  "kejang",
+  "tidak sadar",
+  "perdarahan",
+];
+
+// ─── Component ───────────────────────────────────────────────────────────────
+
+export default function SymptomForm({ onSubmit, isLoading = false }: SymptomFormProps) {
+  const [form, setForm] = useState<SymptomFormData>({
+    patient_age: "",
+    patient_sex: "",
+    patient_weight: "",
+    is_pregnant: false,
+    symptoms: "",
+    temperature: "",
+    duration_days: "",
+    additional_notes: "",
+  });
+
+  const [errors, setErrors] = useState<Partial<Record<keyof SymptomFormData, string>>>({});
+
+  // ── Handlers ──────────────────────────────────────────────────────────────
+
+  function handleChange(
     e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>
-  ) => setForm((prev) => ({ ...prev, [key]: e.target.value }))
+  ) {
+    const { name, value, type } = e.target;
+    const checked = (e.target as HTMLInputElement).checked;
 
-  const onVoiceResult = (text: string) =>
-    setForm((prev) => ({ ...prev, symptoms: prev.symptoms + ' ' + text }))
+    setForm((prev) => ({
+      ...prev,
+      [name]: type === "checkbox" ? checked : value,
+    }));
 
-  const handleSubmit = async (e: React.FormEvent) => {
-    e.preventDefault()
-    if (!form.age || !form.sex || !form.symptoms.trim()) {
-      setError(t('error_generic'))
-      return
-    }
-    setLoading(true)
-    setError('')
-
-    const payload = {
-      age: Number(form.age),
-      sex: form.sex,
-      temp: form.temp || null,
-      symptoms: form.symptoms.trim(),
-    }
-
-    try {
-      const token = localStorage.getItem('jwt_token') ?? ''
-      const isOffline = token === 'offline-mode' || !navigator.onLine
-
-      let result
-
-      if (isOffline) {
-        // Offline: call local Flask directly (localhost:5000)
-        const res = await fetch('http://localhost:5000/api/triage', {
-          method: 'POST',
-          headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify(payload),
-        })
-        result = await res.json()
-      } else {
-        // Online: call Vercel-proxied backend with JWT + HMAC
-        const body = JSON.stringify(payload)
-        const signature = await signRequest(body)
-        const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/triage`, {
-          method: 'POST',
-          headers: {
-            'Content-Type': 'application/json',
-            Authorization: `Bearer ${token}`,
-            'X-Signature': signature,
-          },
-          body,
-        })
-        if (!res.ok) {
-          const err = await res.json()
-          throw new Error(err.error || 'Triage gagal')
-        }
-        result = await res.json()
-      }
-
-      // Save to IndexedDB
-      await savePatientRecord({
-        kader_id: localStorage.getItem('kader_id') ?? 'unknown',
-        patient_age: payload.age,
-        patient_sex: payload.sex,
-        symptoms: payload.symptoms,
-        triage_level: result.triage_level,
-        recommendation: result.recommendation,
-        timestamp: Date.now(),
-        synced: false,
-      })
-
-      // Pass result to result page via sessionStorage
-      sessionStorage.setItem(
-        'triage_result',
-        JSON.stringify({
-          ...result,
-          patient_age: payload.age,
-          patient_sex: payload.sex,
-          symptoms: payload.symptoms,
-          timestamp: Date.now(),
-        })
-      )
-
-      router.push('/result')
-    } catch (err: any) {
-      setError(err.message || 'Terjadi kesalahan, coba lagi')
-    } finally {
-      setLoading(false)
+    // Clear error on change
+    if (errors[name as keyof SymptomFormData]) {
+      setErrors((prev) => ({ ...prev, [name]: undefined }));
     }
   }
 
+  function addShortcut(symptom: string) {
+    setForm((prev) => {
+      const current = prev.symptoms.trim();
+      const already = current
+        .split(",")
+        .map((s) => s.trim().toLowerCase())
+        .includes(symptom.toLowerCase());
+      if (already) return prev;
+      return {
+        ...prev,
+        symptoms: current ? `${current}, ${symptom}` : symptom,
+      };
+    });
+  }
+
+  function validate(): boolean {
+    const newErrors: Partial<Record<keyof SymptomFormData, string>> = {};
+
+    if (form.patient_age === "" || Number(form.patient_age) < 0 || Number(form.patient_age) > 120) {
+      newErrors.patient_age = "Usia pasien wajib diisi (0–120 tahun)";
+    }
+    if (!form.patient_sex) {
+      newErrors.patient_sex = "Jenis kelamin wajib dipilih";
+    }
+    if (!form.symptoms.trim() || form.symptoms.trim().length < 5) {
+      newErrors.symptoms = "Keluhan/gejala wajib diisi (minimal 5 karakter)";
+    }
+    if (form.duration_days === "" || Number(form.duration_days) < 0) {
+      newErrors.duration_days = "Durasi gejala wajib diisi";
+    }
+
+    setErrors(newErrors);
+    return Object.keys(newErrors).length === 0;
+  }
+
+  function handleSubmit(e: React.MouseEvent<HTMLButtonElement>) {
+    e.preventDefault();
+    if (validate()) {
+      onSubmit(form);
+    }
+  }
+
+  const showPregnant =
+    form.patient_sex === "perempuan" &&
+    Number(form.patient_age) >= 12 &&
+    Number(form.patient_age) <= 55;
+
+  // ── Render ────────────────────────────────────────────────────────────────
+
   return (
-    <form onSubmit={handleSubmit} className="space-y-5">
-      <div className="grid grid-cols-2 gap-3">
-        <div>
-          <label className="block text-xs font-medium text-gray-600 mb-1.5">
-            {t('age')} <span className="text-red-500">*</span>
-          </label>
-          <input
-            type="number"
-            value={form.age}
-            onChange={set('age')}
-            placeholder={t('age_placeholder')}
-            min={0} max={120}
-            className="w-full border border-gray-200 rounded-xl px-4 py-3 text-sm focus:outline-none focus:border-green-500 bg-white"
-          />
+    <div className="min-h-screen bg-[#0a1f14] flex flex-col">
+      {/* Header */}
+      <div className="bg-[#0f2d1c] border-b border-[#1a4028] px-4 py-4 sticky top-0 z-10">
+        <div className="max-w-lg mx-auto flex items-center gap-3">
+          <div className="w-8 h-8 rounded-full bg-[#16a34a] flex items-center justify-center text-white text-sm font-bold">
+            +
+          </div>
+          <div>
+            <h1 className="text-white font-semibold text-base leading-tight">PuskesmasAI</h1>
+            <p className="text-[#4ade80] text-xs">Form Triase Pasien</p>
+          </div>
+          <div className="ml-auto">
+            <span className="text-xs text-[#4ade80] bg-[#0f2d1c] border border-[#1a4028] px-2 py-1 rounded-full">
+              ● Offline
+            </span>
+          </div>
         </div>
-        <div>
-          <label className="block text-xs font-medium text-gray-600 mb-1.5">
-            {t('sex')} <span className="text-red-500">*</span>
-          </label>
-          <select
-            value={form.sex}
-            onChange={set('sex')}
-            className="w-full border border-gray-200 rounded-xl px-4 py-3 text-sm focus:outline-none focus:border-green-500 bg-white"
+      </div>
+
+      {/* Body */}
+      <div className="flex-1 px-4 py-6 max-w-lg mx-auto w-full space-y-5">
+
+        {/* Section: Data Pasien */}
+        <Section label="Data Pasien" icon="👤">
+          {/* Usia */}
+          <Field label="Usia Pasien (tahun)" required error={errors.patient_age}>
+            <input
+              type="number"
+              name="patient_age"
+              value={form.patient_age}
+              onChange={handleChange}
+              min={0}
+              max={120}
+              placeholder="Contoh: 32"
+              className={inputClass(!!errors.patient_age)}
+            />
+          </Field>
+
+          {/* Jenis Kelamin */}
+          <Field label="Jenis Kelamin" required error={errors.patient_sex}>
+            <div className="grid grid-cols-2 gap-2">
+              {(["laki-laki", "perempuan"] as const).map((sex) => (
+                <button
+                  key={sex}
+                  type="button"
+                  onClick={() => {
+                    setForm((p) => ({ ...p, patient_sex: sex, is_pregnant: false }));
+                    if (errors.patient_sex) setErrors((p) => ({ ...p, patient_sex: undefined }));
+                  }}
+                  className={`py-2.5 rounded-lg border text-sm font-medium capitalize transition-all ${
+                    form.patient_sex === sex
+                      ? "bg-[#16a34a] border-[#16a34a] text-white"
+                      : "bg-[#0f2d1c] border-[#1a4028] text-[#86efac] hover:border-[#16a34a]"
+                  }`}
+                >
+                  {sex === "laki-laki" ? "👨 Laki-laki" : "👩 Perempuan"}
+                </button>
+              ))}
+            </div>
+            {errors.patient_sex && (
+              <p className="text-red-400 text-xs mt-1">{errors.patient_sex}</p>
+            )}
+          </Field>
+
+          {/* Berat Badan (opsional) */}
+          <Field label="Berat Badan (kg)" hint="Opsional — penting untuk anak">
+            <input
+              type="number"
+              name="patient_weight"
+              value={form.patient_weight}
+              onChange={handleChange}
+              min={1}
+              max={300}
+              placeholder="Contoh: 18"
+              className={inputClass(false)}
+            />
+          </Field>
+
+          {/* Ibu Hamil */}
+          {showPregnant && (
+            <label className="flex items-center gap-3 bg-[#0f2d1c] border border-[#1a4028] rounded-lg px-4 py-3 cursor-pointer">
+              <input
+                type="checkbox"
+                name="is_pregnant"
+                checked={form.is_pregnant}
+                onChange={handleChange}
+                className="w-4 h-4 accent-[#16a34a]"
+              />
+              <span className="text-[#86efac] text-sm">🤰 Sedang hamil</span>
+            </label>
+          )}
+        </Section>
+
+        {/* Section: Keluhan & Gejala */}
+        <Section label="Keluhan & Gejala" icon="🩺">
+          {/* Shortcut buttons */}
+          <div>
+            <p className="text-[#4ade80] text-xs mb-2">Ketuk untuk tambah gejala cepat:</p>
+            <div className="flex flex-wrap gap-2">
+              {SYMPTOM_SHORTCUTS.map((s) => {
+                const active = form.symptoms.toLowerCase().includes(s.toLowerCase());
+                return (
+                  <button
+                    key={s}
+                    type="button"
+                    onClick={() => addShortcut(s)}
+                    className={`text-xs px-3 py-1.5 rounded-full border transition-all ${
+                      active
+                        ? "bg-[#16a34a] border-[#16a34a] text-white"
+                        : "bg-[#0f2d1c] border-[#1a4028] text-[#86efac] hover:border-[#16a34a]"
+                    }`}
+                  >
+                    {s}
+                  </button>
+                );
+              })}
+            </div>
+          </div>
+
+          {/* Textarea gejala */}
+          <Field
+            label="Deskripsi Gejala"
+            required
+            error={errors.symptoms}
+            hint="Tulis dalam Bahasa Indonesia. Contoh: demam 3 hari, bintik merah di kulit, mual"
           >
-            <option value="">Pilih</option>
-            <option value="male">{t('male')}</option>
-            <option value="female">{t('female')}</option>
-          </select>
-        </div>
-      </div>
+            <textarea
+              name="symptoms"
+              value={form.symptoms}
+              onChange={handleChange}
+              rows={4}
+              placeholder="Contoh: demam tinggi 3 hari, muncul bintik merah di lengan, mual dan tidak nafsu makan..."
+              className={`${inputClass(!!errors.symptoms)} resize-none`}
+            />
+          </Field>
 
-      <div>
-        <label className="block text-xs font-medium text-gray-600 mb-1.5">
-          {t('temperature')}
-        </label>
-        <input
-          type="number"
-          value={form.temp}
-          onChange={set('temp')}
-          placeholder="contoh: 38.5"
-          step="0.1" min={30} max={45}
-          className="w-full border border-gray-200 rounded-xl px-4 py-3 text-sm focus:outline-none focus:border-green-500 bg-white"
-        />
-      </div>
+          {/* Durasi */}
+          <Field label="Sudah berapa hari sakit?" required error={errors.duration_days}>
+            <div className="grid grid-cols-4 gap-2">
+              {[1, 2, 3, 7].map((d) => (
+                <button
+                  key={d}
+                  type="button"
+                  onClick={() => {
+                    setForm((p) => ({ ...p, duration_days: d }));
+                    if (errors.duration_days) setErrors((p) => ({ ...p, duration_days: undefined }));
+                  }}
+                  className={`py-2 rounded-lg border text-sm font-medium transition-all ${
+                    Number(form.duration_days) === d
+                      ? "bg-[#16a34a] border-[#16a34a] text-white"
+                      : "bg-[#0f2d1c] border-[#1a4028] text-[#86efac] hover:border-[#16a34a]"
+                  }`}
+                >
+                  {d === 7 ? "7+" : `${d}`}
+                </button>
+              ))}
+            </div>
+            <input
+              type="number"
+              name="duration_days"
+              value={form.duration_days}
+              onChange={handleChange}
+              min={0}
+              placeholder="Atau ketik jumlah hari..."
+              className={`${inputClass(!!errors.duration_days)} mt-2`}
+            />
+          </Field>
+        </Section>
 
-      <div>
-        <div className="flex items-center justify-between mb-1.5">
-          <label className="text-xs font-medium text-gray-600">
-            {t('symptoms')} <span className="text-red-500">*</span>
-          </label>
-          <VoiceInput onResult={onVoiceResult} />
-        </div>
-        <textarea
-          value={form.symptoms}
-          onChange={set('symptoms')}
-          placeholder={t('symptoms_placeholder')}
-          rows={5} maxLength={500}
-          className="w-full border border-gray-200 rounded-xl px-4 py-3 text-sm focus:outline-none focus:border-green-500 bg-white resize-none"
-        />
-        <p className="text-right text-xs text-gray-400 mt-1">
-          {form.symptoms.length}/500
+        {/* Section: Tanda Vital */}
+        <Section label="Tanda Vital" icon="🌡️">
+          <Field label="Suhu Tubuh (°C)" hint="Opsional — isi jika ada termometer">
+            <div className="relative">
+              <input
+                type="number"
+                name="temperature"
+                value={form.temperature}
+                onChange={handleChange}
+                min={34}
+                max={43}
+                step={0.1}
+                placeholder="Contoh: 38.5"
+                className={inputClass(false)}
+              />
+              {form.temperature !== "" && Number(form.temperature) >= 38 && (
+                <span className="absolute right-3 top-1/2 -translate-y-1/2 text-xs text-orange-400 font-medium">
+                  {Number(form.temperature) >= 39.5
+                    ? "🔴 Sangat tinggi"
+                    : Number(form.temperature) >= 38.5
+                    ? "🟠 Tinggi"
+                    : "🟡 Subfebris"}
+                </span>
+              )}
+            </div>
+          </Field>
+        </Section>
+
+        {/* Section: Catatan Tambahan */}
+        <Section label="Catatan Tambahan" icon="📝">
+          <Field hint="Riwayat penyakit, alergi obat, atau kondisi khusus lainnya">
+            <textarea
+              name="additional_notes"
+              value={form.additional_notes}
+              onChange={handleChange}
+              rows={3}
+              placeholder="Contoh: riwayat diabetes, alergi penisilin, sedang minum obat rutin..."
+              className={`${inputClass(false)} resize-none`}
+            />
+          </Field>
+        </Section>
+
+        {/* Submit Button */}
+        <button
+          type="button"
+          onClick={handleSubmit}
+          disabled={isLoading}
+          className="w-full py-4 rounded-xl font-bold text-white text-base transition-all
+            bg-[#16a34a] hover:bg-[#15803d] active:scale-[0.98]
+            disabled:opacity-60 disabled:cursor-not-allowed
+            flex items-center justify-center gap-2 shadow-lg shadow-green-900/40"
+        >
+          {isLoading ? (
+            <>
+              <svg className="animate-spin w-5 h-5" fill="none" viewBox="0 0 24 24">
+                <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4" />
+                <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8v8H4z" />
+              </svg>
+              Menganalisis...
+            </>
+          ) : (
+            <>
+              <span>🔍</span> Analisis Triase
+            </>
+          )}
+        </button>
+
+        <p className="text-center text-[#4ade80] text-xs pb-4">
+          ⚠️ Alat bantu keputusan — bukan pengganti diagnosis dokter
         </p>
       </div>
+    </div>
+  );
+}
 
-      {error && (
-        <div className="bg-red-50 border border-red-200 rounded-xl px-4 py-3">
-          <p className="text-red-600 text-xs">{error}</p>
-        </div>
+// ─── Sub-components ───────────────────────────────────────────────────────────
+
+function Section({
+  label,
+  icon,
+  children,
+}: {
+  label: string;
+  icon: string;
+  children: React.ReactNode;
+}) {
+  return (
+    <div className="bg-[#0f2d1c] border border-[#1a4028] rounded-xl overflow-hidden">
+      <div className="px-4 py-3 border-b border-[#1a4028] flex items-center gap-2">
+        <span>{icon}</span>
+        <h2 className="text-[#4ade80] text-sm font-semibold tracking-wide uppercase">{label}</h2>
+      </div>
+      <div className="px-4 py-4 space-y-4">{children}</div>
+    </div>
+  );
+}
+
+function Field({
+  label,
+  required,
+  hint,
+  error,
+  children,
+}: {
+  label?: string;
+  required?: boolean;
+  hint?: string;
+  error?: string;
+  children: React.ReactNode;
+}) {
+  return (
+    <div className="space-y-1.5">
+      {label && (
+        <label className="block text-[#86efac] text-sm font-medium">
+          {label}
+          {required && <span className="text-red-400 ml-1">*</span>}
+        </label>
       )}
+      {hint && <p className="text-[#4ade80] text-xs opacity-70">{hint}</p>}
+      {children}
+      {error && <p className="text-red-400 text-xs">{error}</p>}
+    </div>
+  );
+}
 
-      <button
-        type="submit"
-        disabled={loading}
-        className="w-full bg-green-600 hover:bg-green-500 disabled:bg-green-300 text-white font-semibold py-4 rounded-xl text-sm transition-colors shadow-md shadow-green-200"
-      >
-        {loading ? `⏳ ${t('analyzing')}` : `🔍 ${t('analyze')}`}
-      </button>
-    </form>
-  )
+function inputClass(hasError: boolean) {
+  return `w-full bg-[#0a1f14] border ${
+    hasError ? "border-red-500" : "border-[#1a4028]"
+  } rounded-lg px-3 py-2.5 text-white text-sm placeholder-[#2d5a3d]
+  focus:outline-none focus:border-[#16a34a] focus:ring-1 focus:ring-[#16a34a] transition-colors`;
 }
