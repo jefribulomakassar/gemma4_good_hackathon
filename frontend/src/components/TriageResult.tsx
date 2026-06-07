@@ -1,4 +1,3 @@
-// frontend/components/TriageResult.tsx
 'use client'
 
 import { TriageOutput } from '@/app/[locale]/history/page'
