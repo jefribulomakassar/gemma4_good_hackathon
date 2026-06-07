@@ -1,0 +1,702 @@
+{
+  "symptoms": [
+    {
+      "id": "demam",
+      "keywords": [
+        "demam",
+        "panas",
+        "suhu tinggi",
+        "badan panas",
+        "demam tinggi"
+      ],
+      "possible_conditions": [
+        {
+          "condition_id": "DBD",
+          "probability": 0.35
+        },
+        {
+          "condition_id": "TIFOID",
+          "probability": 0.30
+        },
+        {
+          "condition_id": "MALARIA",
+          "probability": 0.20
+        },
+        {
+          "condition_id": "ISPA",
+          "probability": 0.15
+        }
+      ],
+      "triage_modifier": "YELLOW"
+    },
+    {
+      "id": "demam_tinggi_mendadak",
+      "keywords": [
+        "demam tinggi mendadak",
+        "panas naik cepat",
+        "demam tiba-tiba",
+        "badannya panas sekali"
+      ],
+      "possible_conditions": [
+        {
+          "condition_id": "DBD",
+          "probability": 0.40
+        },
+        {
+          "condition_id": "MALARIA",
+          "probability": 0.30
+        },
+        {
+          "condition_id": "TIFOID",
+          "probability": 0.20
+        },
+        {
+          "condition_id": "ISPA",
+          "probability": 0.10
+        }
+      ],
+      "triage_modifier": "YELLOW"
+    },
+    {
+      "id": "kejang",
+      "keywords": [
+        "kejang",
+        "step",
+        "tubuh bergetar",
+        "anak step",
+        "tegang terus"
+      ],
+      "possible_conditions": [
+        {
+          "condition_id": "DBD",
+          "probability": 0.45
+        },
+        {
+          "condition_id": "MALARIA",
+          "probability": 0.35
+        },
+        {
+          "condition_id": "TIFOID",
+          "probability": 0.20
+        }
+      ],
+      "triage_modifier": "ORANGE"
+    },
+    {
+      "id": "perdarahan",
+      "keywords": [
+        "perdarahan",
+        "minum darah",
+        "mimisan",
+        "gusi berdarah",
+        "bab darah",
+        "muntah darah"
+      ],
+      "possible_conditions": [
+        {
+          "condition_id": "DBD",
+          "probability": 0.50
+        },
+        {
+          "condition_id": "DIARE_KOLERA",
+          "probability": 0.25
+        },
+        {
+          "condition_id": "TIFOID",
+          "probability": 0.15
+        },
+        {
+          "condition_id": "DIARE",
+          "probability": 0.10
+        }
+      ],
+      "triage_modifier": "ORANGE"
+    },
+    {
+      "id": "diare",
+      "keywords": [
+        "diare",
+        "menceret",
+        "bab cair",
+        "bab encer",
+        "sering buang air besar",
+        "perut lembek"
+      ],
+      "possible_conditions": [
+        {
+          "condition_id": "DIARE",
+          "probability": 0.50
+        },
+        {
+          "condition_id": "DIARE_KOLERA",
+          "probability": 0.25
+        },
+        {
+          "condition_id": "TIFOID",
+          "probability": 0.15
+        },
+        {
+          "condition_id": "MALARIA",
+          "probability": 0.10
+        }
+      ],
+      "triage_modifier": "YELLOW"
+    },
+    {
+      "id": "diare_berat",
+      "keywords": [
+        "diare berat",
+        "menceret parah",
+        "diare berulang",
+        "bab cair banyak",
+        "diare terus-menerus"
+      ],
+      "possible_conditions": [
+        {
+          "condition_id": "DIARE_KOLERA",
+          "probability": 0.45
+        },
+        {
+          "condition_id": "DIARE",
+          "probability": 0.40
+        },
+        {
+          "condition_id": "TIFOID",
+          "probability": 0.15
+        }
+      ],
+      "triage_modifier": "ORANGE"
+    },
+    {
+      "id": "dehidrasi",
+      "keywords": [
+        "dehidrasi",
+        "kering",
+        "bibir kering",
+        "tidak bisa pipis",
+        "air kencing sedikit",
+        "lemas",
+        "pusing"
+      ],
+      "possible_conditions": [
+        {
+          "condition_id": "DIARE",
+          "probability": 0.40
+        },
+        {
+          "condition_id": "DIARE_KOLERA",
+          "probability": 0.35
+        },
+        {
+          "condition_id": "MALARIA",
+          "probability": 0.15
+        },
+        {
+          "condition_id": "DBD",
+          "probability": 0.10
+        }
+      ],
+      "triage_modifier": "ORANGE"
+    },
+    {
+      "id": "batuk",
+      "keywords": [
+        "batuk",
+        "batuk-batuk",
+        "ada yang mengganggu di dada",
+        "batuk kering",
+        "batuk berdahak"
+      ],
+      "possible_conditions": [
+        {
+          "condition_id": "ISPA",
+          "probability": 0.50
+        },
+        {
+          "condition_id": "TUBERKULOSIS",
+          "probability": 0.20
+        },
+        {
+          "condition_id": "DBD",
+          "probability": 0.15
+        },
+        {
+          "condition_id": "MALARIA",
+          "probability": 0.15
+        }
+      ],
+      "triage_modifier": "YELLOW"
+    },
+    {
+      "id": "batuk_lama",
+      "keywords": [
+        "batuk lama",
+        "batuk 3 minggu",
+        "batuk berdarah",
+        "batuk berkelanjutan",
+        "batuk turun",
+        "batuk setiap hari"
+      ],
+      "possible_conditions": [
+        {
+          "condition_id": "TUBERKULOSIS",
+          "probability": 0.50
+        },
+        {
+          "condition_id": "ISPA",
+          "probability": 0.30
+        },
+        {
+          "condition_id": "DBD",
+          "probability": 0.10
+        },
+        {
+          "condition_id": "MALARIA",
+          "probability": 0.10
+        }
+      ],
+      "triage_modifier": "YELLOW"
+    },
+    {
+      "id": "sesak_napas",
+      "keywords": [
+        "sesak napas",
+        "napas terengah",
+        "sulit bernapas",
+        "napas cepat",
+        "dada sesak",
+        "tercekik"
+      ],
+      "possible_conditions": [
+        {
+          "condition_id": "ISPA",
+          "probability": 0.40
+        },
+        {
+          "condition_id": "DBD",
+          "probability": 0.25
+        },
+        {
+          "condition_id": "TUBERKULOSIS",
+          "probability": 0.15
+        },
+        {
+          "condition_id": "MALARIA",
+          "probability": 0.20
+        }
+      ],
+      "triage_modifier": "ORANGE"
+    },
+    {
+      "id": "nyeri_kepala",
+      "keywords": [
+        "nyeri kepala",
+        "sakit kepala",
+        "kepala pusing",
+        "pusing",
+        "migrain"
+      ],
+      "possible_conditions": [
+        {
+          "condition_id": "MALARIA",
+          "probability": 0.30
+        },
+        {
+          "condition_id": "TIFOID",
+          "probability": 0.25
+        },
+        {
+          "condition_id": "DBD",
+          "probability": 0.20
+        },
+        {
+          "condition_id": "ISPA",
+          "probability": 0.15
+        },
+        {
+          "condition_id": "HIPERTENSI",
+          "probability": 0.10
+        }
+      ],
+      "triage_modifier": "YELLOW"
+    },
+    {
+      "id": "nyeri_otot_sendi",
+      "keywords": [
+        "nyeri otot",
+        "nyeri sendi",
+        "badan pegal",
+        "pegal-pegal",
+        "sakit di sendi",
+        "tulang sakit",
+        "pegal linu"
+      ],
+      "possible_conditions": [
+        {
+          "condition_id": "DBD",
+          "probability": 0.35
+        },
+        {
+          "condition_id": "MALARIA",
+          "probability": 0.30
+        },
+        {
+          "condition_id": "TIFOID",
+          "probability": 0.20
+        },
+        {
+          "condition_id": "ISPA",
+          "probability": 0.15
+        }
+      ],
+      "triage_modifier": "YELLOW"
+    },
+    {
+      "id": "nyeri_perut",
+      "keywords": [
+        "nyeri perut",
+        "perut sakit",
+        "perut kram",
+        "kram perut",
+        "sakit di pusar",
+        "tidak bisa makan"
+      ],
+      "possible_conditions": [
+        {
+          "condition_id": "DIARE",
+          "probability": 0.35
+        },
+        {
+          "condition_id": "TIFOID",
+          "probability": 0.25
+        },
+        {
+          "condition_id": "DIARE_KOLERA",
+          "probability": 0.20
+        },
+        {
+          "condition_id": "DBD",
+          "probability": 0.15
+        },
+        {
+          "condition_id": "MALARIA",
+          "probability": 0.05
+        }
+      ],
+      "triage_modifier": "YELLOW"
+    },
+    {
+      "id": "mual_muntah",
+      "keywords": [
+        "mual",
+        "muntah",
+        "ingin muntah",
+        "perut mual",
+        "eneg",
+        "masuk angin"
+      ],
+      "possible_conditions": [
+        {
+          "condition_id": "TIFOID",
+          "probability": 0.30
+        },
+        {
+          "condition_id": "DBD",
+          "probability": 0.25
+        },
+        {
+          "condition_id": "MALARIA",
+          "probability": 0.20
+        },
+        {
+          "condition_id": "DIARE",
+          "probability": 0.15
+        },
+        {
+          "condition_id": "ISPA",
+          "probability": 0.10
+        }
+      ],
+      "triage_modifier": "YELLOW"
+    },
+    {
+      "id": "tekanan_darah_tinggi",
+      "keywords": [
+        "tekanan darah tinggi",
+        "hipertensi",
+        "darah tinggi",
+        "tensi tinggi",
+        "kepala pusing sering",
+        "mata berkunang"
+      ],
+      "possible_conditions": [
+        {
+          "condition_id": "HIPERTENSI",
+          "probability": 0.80
+        },
+        {
+          "condition_id": "PREEKLAMSIA",
+          "probability": 0.15
+        },
+        {
+          "condition_id": "DBD",
+          "probability": 0.05
+        }
+      ],
+      "triage_modifier": "YELLOW"
+    },
+    {
+      "id": "gejala_preeklamsia",
+      "keywords": [
+        "pembengkakan",
+        "edema",
+        "tangan bengkak",
+        "wajah bengkak",
+        "mata berkunang saat hamil",
+        "sakit kepala hebat hamil",
+        "nyeri ulu hati saat hamil"
+      ],
+      "possible_conditions": [
+        {
+          "condition_id": "PREEKLAMSIA",
+          "probability": 0.85
+        },
+        {
+          "condition_id": "HIPERTENSI",
+          "probability": 0.10
+        },
+        {
+          "condition_id": "GIZI_BURUK",
+          "probability": 0.05
+        }
+      ],
+      "triage_modifier": "ORANGE"
+    },
+    {
+      "id": "gizi_buruk",
+      "keywords": [
+        "gizi buruk",
+        "kurang gizi",
+        "kurang makan",
+        "berat badan turun",
+        "anak kurus",
+        "marasmus",
+        "kwashiorkor",
+        "badan kering"
+      ],
+      "possible_conditions": [
+        {
+          "condition_id": "GIZI_BURUK",
+          "probability": 0.75
+        },
+        {
+          "condition_id": "TUBERKULOSIS",
+          "probability": 0.15
+        },
+        {
+          "condition_id": "DIARE",
+          "probability": 0.10
+        }
+      ],
+      "triage_modifier": "YELLOW"
+    },
+    {
+      "id": "sakit_tenggorokan",
+      "keywords": [
+        "sakit tenggorokan",
+        "tenggorokan merah",
+        "sulit menelan",
+        "ada nanah di tenggorokan",
+        "amandel bengkak"
+      ],
+      "possible_conditions": [
+        {
+          "condition_id": "ISPA",
+          "probability": 0.60
+        },
+        {
+          "condition_id": "TUBERKULOSIS",
+          "probability": 0.15
+        },
+        {
+          "condition_id": "DBD",
+          "probability": 0.15
+        },
+        {
+          "condition_id": "MALARIA",
+          "probability": 0.10
+        }
+      ],
+      "triage_modifier": "YELLOW"
+    },
+    {
+      "id": "ruam_kulit",
+      "keywords": [
+        "ruam",
+        "ruam merah",
+        "bintik merah",
+        "gatal-gatal",
+        "kulit merah",
+        "cacar"
+      ],
+      "possible_conditions": [
+        {
+          "condition_id": "DBD",
+          "probability": 0.40
+        },
+        {
+          "condition_id": "MALARIA",
+          "probability": 0.30
+        },
+        {
+          "condition_id": "ISPA",
+          "probability": 0.20
+        },
+        {
+          "condition_id": "TIFOID",
+          "probability": 0.10
+        }
+      ],
+      "triage_modifier": "YELLOW"
+    }
+  ],
+  "red_flag_keywords": [
+    "perdarahan hebat",
+    "muntah darah",
+    "kesadaran turun",
+    "kejang berkepanjangan",
+    "napas sangat cepat",
+    "syok",
+    "anak tidak responsif",
+    "anak lemas sekali",
+    "nyeri dada",
+    "tekanan darah sangat tinggi",
+    "eklampsia",
+    "perdarahan genital",
+    "shock",
+    "tidak sadar",
+    "batuk darah banyak"
+  ],
+  "triage_escalation_rules": [
+    {
+      "id": "bayi_demam",
+      "condition": "Bayi usia < 3 bulan dengan demam",
+      "keywords": ["bayi", "bayi kecil", "newborn"],
+      "base_triage": "YELLOW",
+      "escalated_triage": "ORANGE",
+      "description": "Bayi kecil dengan demam perlu evaluasi lebih lanjut"
+    },
+    {
+      "id": "ibu_hamil_tekanan_tinggi",
+      "condition": "Ibu hamil dengan tekanan darah tinggi dan gejala preeklamsia",
+      "keywords": ["hamil", "ibu hamil", "kehamilan", "pregnant"],
+      "base_triage": "YELLOW",
+      "escalated_triage": "ORANGE",
+      "description": "Ibu hamil dengan tekanan darah tinggi perlu penanganan segera"
+    },
+    {
+      "id": "ibu_hamil_perdarahan",
+      "condition": "Ibu hamil dengan perdarahan",
+      "keywords": ["hamil", "perdarahan", "pendarahan"],
+      "base_triage": "ORANGE",
+      "escalated_triage": "RED",
+      "description": "Ibu hamil dengan perdarahan adalah kondisi emergensi"
+    },
+    {
+      "id": "gejala_panjang",
+      "condition": "Gejala berlangsung lebih dari 2 minggu",
+      "keywords": ["2 minggu", "3 minggu", "lama", "lalu"],
+      "base_triage": "YELLOW",
+      "escalated_triage": "YELLOW",
+      "description": "Evaluasi untuk penyakit kronis seperti TB"
+    },
+    {
+      "id": "malnutrisi_parah",
+      "condition": "Malnutrisi parah dengan tanda vital tidak stabil",
+      "keywords": ["gizi buruk", "marasmus", "kwashiorkor"],
+      "base_triage": "YELLOW",
+      "escalated_triage": "ORANGE",
+      "description": "Malnutrisi parah memerlukan intervensi segera"
+    },
+    {
+      "id": "demam_tinggi_bayi",
+      "condition": "Bayi dengan demam > 39°C",
+      "keywords": ["bayi", "demam tinggi", "39", "40"],
+      "base_triage": "YELLOW",
+      "escalated_triage": "ORANGE",
+      "description": "Demam tinggi pada bayi memerlukan penanganan cepat"
+    }
+  ],
+  "condition_definitions": {
+    "DBD": {
+      "name": "Demam Berdarah Dengue",
+      "severity": "HIGH",
+      "key_symptoms": ["demam tinggi", "perdarahan", "nyeri kepala", "nyeri otot", "ruam"],
+      "duration": "3-7 hari",
+      "transmission": "Nyamuk Aedes"
+    },
+    "TIFOID": {
+      "name": "Tifus Abdominal",
+      "severity": "HIGH",
+      "key_symptoms": ["demam berkelanjutan", "nyeri perut", "mual", "tinja gelap"],
+      "duration": "2-4 minggu",
+      "transmission": "Makanan/minuman terkontaminasi"
+    },
+    "MALARIA": {
+      "name": "Malaria",
+      "severity": "HIGH",
+      "key_symptoms": ["demam periodik", "menggigil", "berkeringat", "nyeri kepala", "nyeri otot"],
+      "duration": "Bergantung strain parasit",
+      "transmission": "Nyamuk Anopheles"
+    },
+    "ISPA": {
+      "name": "Infeksi Saluran Pernapasan Akut",
+      "severity": "MEDIUM",
+      "key_symptoms": ["batuk", "sakit tenggorokan", "pilek", "sesak napas ringan"],
+      "duration": "3-7 hari",
+      "transmission": "Droplet dari batuk/bersin"
+    },
+    "DIARE": {
+      "name": "Diare Akut",
+      "severity": "MEDIUM",
+      "key_symptoms": ["bab cair", "nyeri perut", "mual", "dehidrasi ringan"],
+      "duration": "2-5 hari",
+      "transmission": "Makanan/minuman terkontaminasi"
+    },
+    "DIARE_KOLERA": {
+      "name": "Kolera",
+      "severity": "CRITICAL",
+      "key_symptoms": ["diare masif", "muntah", "dehidrasi berat", "renjatan"],
+      "duration": "Cepat berkembang",
+      "transmission": "Air terkontaminasi"
+    },
+    "HIPERTENSI": {
+      "name": "Hipertensi",
+      "severity": "MEDIUM",
+      "key_symptoms": ["tekanan darah tinggi", "sakit kepala", "mata berkunang"],
+      "duration": "Kronis",
+      "transmission": "Non-infectious"
+    },
+    "TUBERKULOSIS": {
+      "name": "Tuberkulosis",
+      "severity": "HIGH",
+      "key_symptoms": ["batuk lama", "batuk berdarah", "badan lemas", "berat badan turun"],
+      "duration": "Minggu-bulan",
+      "transmission": "Droplet nucleus"
+    },
+    "GIZI_BURUK": {
+      "name": "Malnutrisi/Gizi Buruk",
+      "severity": "HIGH",
+      "key_symptoms": ["berat badan kurang", "tubuh kurus", "lemah", "edema"],
+      "duration": "Kronis",
+      "transmission": "Non-infectious"
+    },
+    "PREEKLAMSIA": {
+      "name": "Preeklamsia",
+      "severity": "CRITICAL",
+      "key_symptoms": ["tekanan darah tinggi saat hamil", "proteinuria", "pembengkakan", "sakit kepala"],
+      "duration": "Dapat terjadi kapan saja saat kehamilan",
+      "transmission": "Non-infectious"
+    }
+  }
+}
