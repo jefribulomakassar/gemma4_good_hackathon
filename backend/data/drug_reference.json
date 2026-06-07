@@ -1,0 +1,646 @@
+{
+  "drugs": [
+    {
+      "id": "paracetamol",
+      "name": "Paracetamol",
+      "nama_lain": [
+        "Asetaminofen",
+        "Parasetamol"
+      ],
+      "golongan": "Analgetik-Antipiretik",
+      "tersedia_di": [
+        "Puskesmas",
+        "Posyandu",
+        "Apotek",
+        "Warung Obat"
+      ],
+      "resep_diperlukan": false,
+      "indikasi": [
+        "Demam",
+        "Nyeri ringan sampai sedang",
+        "Sakit kepala",
+        "Nyeri otot"
+      ],
+      "kontraindikasi": [
+        "Hipersensitivitas terhadap paracetamol",
+        "Penyakit hati berat",
+        "Penyakit ginjal berat"
+      ],
+      "dosis": {
+        "dewasa": {
+          "oral": "500-1000 mg setiap 4-6 jam, maksimal 4000 mg per hari"
+        },
+        "pediatrik": {
+          "per_kg_bb": "15 mg/kg setiap 4-6 jam, maksimal 5 dosis per hari"
+        }
+      },
+      "sediaan": [
+        "Tablet 500 mg",
+        "Sirup 120 mg/5 mL",
+        "Suppositoria 125, 250, 500 mg"
+      ],
+      "peringatan": [
+        "Jangan melebihi dosis maksimal untuk menghindari kerusakan hati",
+        "Hindari pada penderita penyakit hati kronis",
+        "Batasi penggunaan jangka panjang tanpa konsultasi medis"
+      ],
+      "untuk_penyakit": [
+        "DBD",
+        "TIFOID",
+        "MALARIA",
+        "ISPA"
+      ]
+    },
+    {
+      "id": "oralit",
+      "name": "Oralit",
+      "nama_lain": [
+        "ORS",
+        "Oral Rehydration Solution",
+        "Larutan Oralit"
+      ],
+      "golongan": "Elektrolit-Rehidrasi",
+      "tersedia_di": [
+        "Puskesmas",
+        "Posyandu",
+        "Apotek",
+        "Warung Obat",
+        "Toko Kelontong"
+      ],
+      "resep_diperlukan": false,
+      "indikasi": [
+        "Dehidrasi ringan sampai sedang",
+        "Diare",
+        "Muntah",
+        "Kehilangan cairan"
+      ],
+      "kontraindikasi": [
+        "Dehidrasi berat dengan syok",
+        "Ileus paralitik",
+        "Perforasi usus"
+      ],
+      "dosis": {
+        "dewasa": {
+          "oral": "Sesuai kebutuhan cairan yang hilang, biasanya 50-100 mL/kg selama 4 jam pertama"
+        },
+        "pediatrik": {
+          "per_kg_bb": "50-100 mL/kg BB dalam 4 jam pertama, kemudian 10 mL/kg untuk setiap tinja cair"
+        }
+      },
+      "sediaan": [
+        "Sachet 1 liter",
+        "Sachet 500 mL",
+        "Larutan siap pakai"
+      ],
+      "peringatan": [
+        "Tidak menggantikan penanganan dehidrasi berat (IV)",
+        "Ganti sachet setelah 24 jam terbuka",
+        "Pastikan air yang digunakan bersih",
+        "Jika diare berlanjut > 5 hari, rujuk ke rumah sakit"
+      ],
+      "untuk_penyakit": [
+        "DIARE",
+        "DIARE_KOLERA",
+        "ISPA"
+      ]
+    },
+    {
+      "id": "zinc",
+      "name": "Zinc",
+      "nama_lain": [
+        "Seng",
+        "Zinc Sulfate",
+        "Zinc Gluconate"
+      ],
+      "golongan": "Suplementasi Mineral",
+      "tersedia_di": [
+        "Puskesmas",
+        "Posyandu",
+        "Apotek"
+      ],
+      "resep_diperlukan": false,
+      "indikasi": [
+        "Defisiensi zinc",
+        "Diare akut dan kronis",
+        "Malnutrisi",
+        "Infeksi berulang",
+        "Luka lambat sembuh"
+      ],
+      "kontraindikasi": [
+        "Hipersensitivitas terhadap zinc",
+        "Hemokromatosis"
+      ],
+      "dosis": {
+        "dewasa": {
+          "oral": "20-40 mg elemen zinc per hari"
+        },
+        "pediatrik": {
+          "per_kg_bb": "Bayi < 6 bulan: 10 mg per hari; Anak 6 bulan-5 tahun: 20 mg per hari; > 5 tahun: 30 mg per hari"
+        }
+      },
+      "sediaan": [
+        "Tablet 20 mg",
+        "Syrup 10 mg/5 mL",
+        "Sachet effervescent 20 mg"
+      ],
+      "peringatan": [
+        "Diminum 1 jam sebelum atau 2 jam sesudah makan untuk penyerapan optimal",
+        "Dapat menyebabkan mual jika diminum saat perut kosong",
+        "Pemberian minimal 10-14 hari bahkan setelah diare berhenti",
+        "Jangan campurkan dengan susu atau produk kaya kalsium"
+      ],
+      "untuk_penyakit": [
+        "DIARE",
+        "DIARE_KOLERA",
+        "GIZI_BURUK",
+        "ISPA"
+      ]
+    },
+    {
+      "id": "vitamin_a",
+      "name": "Vitamin A",
+      "nama_lain": [
+        "Retinol",
+        "Vitamin A Palmitate",
+        "Retinyl Acetate"
+      ],
+      "golongan": "Vitamin Larut Lemak",
+      "tersedia_di": [
+        "Puskesmas",
+        "Posyandu",
+        "Apotek"
+      ],
+      "resep_diperlukan": false,
+      "indikasi": [
+        "Defisiensi vitamin A",
+        "Xerofalmia",
+        "Gangguan penglihatan malam",
+        "Infeksi berulang",
+        "Gizi kurang",
+        "Diare"
+      ],
+      "kontraindikasi": [
+        "Hipervitaminosis A",
+        "Kehamilan trimester pertama (dosis tinggi)"
+      ],
+      "dosis": {
+        "dewasa": {
+          "oral": "Defisiensi: 200,000 IU hari ke-1, hari ke-2, dan 2 minggu kemudian; Profilaksis: 10,000 IU per hari"
+        },
+        "pediatrik": {
+          "per_kg_bb": "Anak 1-8 tahun: 100,000 IU hari ke-1 dan ke-2, 2 minggu kemudian; Bayi < 1 tahun: 50,000 IU; Profilaksis: 5,000 IU per hari"
+        }
+      },
+      "sediaan": [
+        "Kapsul 50,000 IU",
+        "Kapsul 100,000 IU",
+        "Kapsul 200,000 IU",
+        "Sirup 5,000 IU/mL"
+      ],
+      "peringatan": [
+        "Pemberian vitamin A dosis tinggi hanya pada kasus defisiensi berat",
+        "Hindari overdosis karena teratogenik pada kehamilan",
+        "Monitor dosis kumulatif",
+        "Biasanya diberikan bersamaan dengan pemberian vaksin"
+      ],
+      "untuk_penyakit": [
+        "GIZI_BURUK",
+        "ISPA",
+        "DIARE",
+        "MALARIA",
+        "TIFOID"
+      ]
+    },
+    {
+      "id": "ctm",
+      "name": "CTM",
+      "nama_lain": [
+        "Chlorpheniramin Maleate",
+        "Antihistamin"
+      ],
+      "golongan": "Antihistamin Generasi I",
+      "tersedia_di": [
+        "Puskesmas",
+        "Apotek",
+        "Warung Obat"
+      ],
+      "resep_diperlukan": false,
+      "indikasi": [
+        "Alergi",
+        "Gatal-gatal",
+        "Urtikaria",
+        "Reaksi alergi ringan sampai sedang",
+        "Dermatitis alergi"
+      ],
+      "kontraindikasi": [
+        "Hipersensitivitas terhadap antihistamin",
+        "Glaukoma sudut tertutup",
+        "Hiperplasia prostat",
+        "Tardive dyskinesia",
+        "Kehamilan (terutama trimester pertama)"
+      ],
+      "dosis": {
+        "dewasa": {
+          "oral": "2-4 mg setiap 4-6 jam, maksimal 12 mg per hari"
+        },
+        "pediatrik": {
+          "per_kg_bb": "Anak 2-6 tahun: 0,5 mg setiap 4-6 jam; Anak 6-12 tahun: 1-2 mg setiap 4-6 jam; Maksimal 6 mg per hari"
+        }
+      },
+      "sediaan": [
+        "Tablet 4 mg",
+        "Sirup 2 mg/5 mL",
+        "Injeksi 10 mg/mL"
+      ],
+      "peringatan": [
+        "Dapat menyebabkan mengantuk; hindari berkendara setelah minum",
+        "Efek antikolinergik dapat memperburuk glaukoma",
+        "Hati-hati pada pasien hipertensi",
+        "Tidak boleh diberikan pada bayi < 2 tahun tanpa konsultasi dokter"
+      ],
+      "untuk_penyakit": [
+        "ISPA",
+        "DBD",
+        "MALARIA"
+      ]
+    },
+    {
+      "id": "amoksisilin",
+      "name": "Amoksisilin",
+      "nama_lain": [
+        "Amoxicillin",
+        "Penisilin Semisintetik"
+      ],
+      "golongan": "Antibiotik Beta-Laktam",
+      "tersedia_di": [
+        "Puskesmas",
+        "Apotek"
+      ],
+      "resep_diperlukan": true,
+      "indikasi": [
+        "Infeksi saluran pernapasan",
+        "Infeksi telinga, hidung, tenggorokan",
+        "Infeksi saluran kemih",
+        "Infeksi kulit dan jaringan lunak",
+        "Pneumonia",
+        "Otitis media",
+        "Bronkitis"
+      ],
+      "kontraindikasi": [
+        "Alergi penisilin atau sefalosporin",
+        "Mononukleosis infeksiosa",
+        "Diare berat"
+      ],
+      "dosis": {
+        "dewasa": {
+          "oral": "250-500 mg setiap 8 jam atau 500-875 mg setiap 12 jam selama 7-14 hari"
+        },
+        "pediatrik": {
+          "per_kg_bb": "20-40 mg/kg BB per hari dibagi menjadi 3 dosis selama 7-10 hari"
+        }
+      },
+      "sediaan": [
+        "Tablet 250 mg",
+        "Tablet 500 mg",
+        "Kapsul 250 mg",
+        "Kapsul 500 mg",
+        "Suspensi 125 mg/5 mL",
+        "Suspensi 250 mg/5 mL",
+        "Injeksi 250 mg, 500 mg"
+      ],
+      "peringatan": [
+        "Tanyakan riwayat alergi penisilin sebelum pemberian",
+        "Minum dengan air putih, dapat diminum dengan atau tanpa makanan",
+        "Habiskan seluruh antibiotik meski gejala sudah hilang",
+        "Jarang terjadi efek samping serius, tetapi bisa terjadi reaksi anafilaksis",
+        "Dapat menyebabkan fotosensitivitas pada beberapa individu",
+        "Tidak efektif untuk infeksi virus"
+      ],
+      "untuk_penyakit": [
+        "ISPA",
+        "TIFOID",
+        "DIARE_KOLERA"
+      ]
+    },
+    {
+      "id": "oat",
+      "name": "OAT",
+      "nama_lain": [
+        "Obat Anti Tuberkulosis",
+        "TB Drugs",
+        "Fixed Dose Combination",
+        "FDC"
+      ],
+      "golongan": "Antituberkulosis",
+      "tersedia_di": [
+        "Puskesmas",
+        "Klinik TB",
+        "Rumah Sakit"
+      ],
+      "resep_diperlukan": true,
+      "indikasi": [
+        "Tuberkulosis paru",
+        "Tuberkulosis ekstraparu",
+        "Pencegahan tuberkulosis aktif pada kontak seronegatif"
+      ],
+      "kontraindikasi": [
+        "Hipersensitivitas terhadap OAT",
+        "Hepatitis aktif parah",
+        "Gagal ginjal berat"
+      ],
+      "dosis": {
+        "dewasa": {
+          "oral": "Standar Fase Intensif: HRZE (Isoniazid 5 mg/kg, Rifampisin 10 mg/kg, Pirazinamid 25 mg/kg, Etambutol 15 mg/kg) selama 2 bulan; Fase Lanjutan: HR (Isoniazid + Rifampisin) selama 4 bulan"
+        },
+        "pediatrik": {
+          "per_kg_bb": "Dosis sesuai berat badan, standar sama dengan dewasa, sering menggunakan kombinasi tetap dosis"
+        }
+      },
+      "sediaan": [
+        "Kombinasi HRZE (Fixed Dose Combination)",
+        "Kombinasi HR",
+        "Tablet individual komponen",
+        "Sirup untuk anak"
+      ],
+      "peringatan": [
+        "Monitoring ketat dengan pemeriksaan dahak berkala",
+        "Risiko hepatotoksisitas tinggi, monitor fungsi hati",
+        "Efek samping: gangguan GI, hepatitis, neuropati perifer, reaksi hipersensitivitas",
+        "Jangan mengganti sendiri kombinasi obat",
+        "Kepatuhan minum obat sangat kritis untuk kesuksesan",
+        "Hindari alkohol selama pengobatan",
+        "Rifampisin dapat mengurangi efektivitas kontrasepsi oral"
+      ],
+      "untuk_penyakit": [
+        "TUBERKULOSIS"
+      ]
+    },
+    {
+      "id": "mgso4",
+      "name": "MgSO4",
+      "nama_lain": [
+        "Magnesium Sulfat",
+        "Magnesium Sulphate"
+      ],
+      "golongan": "Elektrolit",
+      "tersedia_di": [
+        "Puskesmas",
+        "Rumah Sakit",
+        "Apotek"
+      ],
+      "resep_diperlukan": true,
+      "indikasi": [
+        "Preeklamsia",
+        "Eklampsia",
+        "Pencegahan kejang pada preeklamsia berat",
+        "Hipomagnesemia",
+        "Konstipasi berat",
+        "Aritmia jantung"
+      ],
+      "kontraindikasi": [
+        "Hipersensitivitas",
+        "Blokade jantung",
+        "Miokard infark berat",
+        "Gagal ginjal berat (GFR < 30)",
+        "Hipermagnesemia"
+      ],
+      "dosis": {
+        "dewasa": {
+          "oral": "Konstipasi: 2.4-4.8 g per hari dalam dosis terbagi",
+          "injeksi_iv": "Preeklamsia/Eklampsia: Loading dose 4-5 g IV dalam 20-30 menit, maintenance 1-2 g/jam IV"
+        },
+        "pediatrik": {
+          "per_kg_bb": "Dosis sangat terbatas pada anak, biasanya hanya untuk kondisi spesifik"
+        }
+      },
+      "sediaan": [
+        "Injeksi 40% (4 g/10 mL)",
+        "Injeksi 50% (5 g/10 mL)",
+        "Larutan oral",
+        "Powder untuk dilarutkan"
+      ],
+      "peringatan": [
+        "Monitoring ketat refleks patella dan frekuensi pernapasan",
+        "Risiko depresi napas dan hipotensi",
+        "Kontrasindikasi pada myasthenia gravis",
+        "Berikan antidot kalsium glukonat 10% siap di tempat",
+        "Periksa fungsi ginjal sebelum pemberian IV",
+        "Hanya diberikan oleh tenaga medis terlatih"
+      ],
+      "untuk_penyakit": [
+        "PREEKLAMSIA"
+      ]
+    },
+    {
+      "id": "tablet_fe",
+      "name": "Tablet Fe",
+      "nama_lain": [
+        "Tablet Besi",
+        "Iron Supplement",
+        "Ferrous Sulfate",
+        "Ferrous Fumarate"
+      ],
+      "golongan": "Suplementasi Mineral",
+      "tersedia_di": [
+        "Puskesmas",
+        "Posyandu",
+        "Apotek",
+        "Toko Kelontong"
+      ],
+      "resep_diperlukan": false,
+      "indikasi": [
+        "Anemia defisiensi besi",
+        "Pencegahan anemia pada kehamilan",
+        "Pencegahan anemia pada anak",
+        "Malnutrisi",
+        "Perdarahan kronis"
+      ],
+      "kontraindikasi": [
+        "Hipersensitivitas terhadap besi",
+        "Hemokromatosis",
+        "Anemia non-defisiensi besi",
+        "Talasemia"
+      ],
+      "dosis": {
+        "dewasa": {
+          "oral": "Terapi anemia: 60-120 mg elemen besi per hari; Profilaksis kehamilan: 30-60 mg elemen besi per hari"
+        },
+        "pediatrik": {
+          "per_kg_bb": "Terapi: 3-6 mg/kg BB elemen besi per hari; Profilaksis: 0.5-1 mg/kg BB per hari"
+        }
+      },
+      "sediaan": [
+        "Tablet 200 mg (65 mg elemen besi)",
+        "Tablet 325 mg (100 mg elemen besi)",
+        "Sirup 30 mg elemen besi/5 mL",
+        "Kaplet 200 mg",
+        "Kombinasi Fe + Folat + Vitamin C"
+      ],
+      "peringatan": [
+        "Minum saat perut kosong atau 1-2 jam sebelum makan untuk penyerapan optimal",
+        "Jika perut keberatan, bisa diminum bersama makanan ringan",
+        "Dapat menyebabkan konstipasi; minum banyak air dan perbanyak serat",
+        "Dapat menghitamkan tinja (normal)",
+        "Tidak boleh diminum bersamaan dengan teh, kopi, atau produk susu",
+        "Simpan di tempat aman karena racun pada overdosis",
+        "Pemberian minimal 3 bulan untuk efek terapi"
+      ],
+      "untuk_penyakit": [
+        "GIZI_BURUK",
+        "DIARE",
+        "TIFOID",
+        "ISPA"
+      ]
+    },
+    {
+      "id": "f75_f100",
+      "name": "F-75/F-100",
+      "nama_lain": [
+        "Formula Nutrisi Theranutrisi",
+        "Therapeutic Food",
+        "Pangan Terapi",
+        "Nutrient Dense Food"
+      ],
+      "golongan": "Makanan Terapeutik",
+      "tersedia_di": [
+        "Puskesmas",
+        "Posyandu",
+        "Klinik Gizi",
+        "Rumah Sakit"
+      ],
+      "resep_diperlukan": false,
+      "indikasi": [
+        "Malnutrisi akut berat dengan komplikasi medis (F-75)",
+        "Malnutrisi akut berat tanpa komplikasi medis (F-100)",
+        "Gizi buruk",
+        "Pemulihan pasca infeksi parah",
+        "Anak dengan berat badan sangat kurang"
+      ],
+      "kontraindikasi": [
+        "Alergi susu sapi (gunakan formula tanpa laktosa)",
+        "Diare berat uncontrolled (gunakan F-75 dahulu)"
+      ],
+      "dosis": {
+        "dewasa": {
+          "oral": "Untuk anak, lihat dosis pediatrik; Dewasa jarang menggunakan F-75/F-100"
+        },
+        "pediatrik": {
+          "per_kg_bb": "F-75: Fase stabilisasi, 75 kcal/kg BB/hari dan 0.9 g protein/kg BB/hari; F-100: Fase rehabilitasi, 100 kcal/kg BB/hari dan 1.3 g protein/kg BB/hari"
+        }
+      },
+      "sediaan": [
+        "F-75: 75 kcal/100 mL (fase stabilisasi)",
+        "F-100: 100 kcal/100 mL (fase rehabilitasi)",
+        "Powder dalam sachet",
+        "Larutan siap pakai",
+        "Kombinasi dengan bahan lokal"
+      ],
+      "peringatan": [
+        "F-75 diberikan saat ada komplikasi medis atau pasien tidak siap untuk nutrisi tinggi",
+        "F-100 diberikan setelah stabilisasi dan siap untuk catch-up growth",
+        "Monitoring ketat selama transisi F-75 ke F-100",
+        "Penyajian dalam volume kecil, frekuensi tinggi (6-8x per hari)",
+        "Jangan memaksa anak minum jika menolak",
+        "Harus dimonitor selama proses pemberian",
+        "Refeeding syndrome mungkin terjadi, monitor elektrolit"
+      ],
+      "untuk_penyakit": [
+        "GIZI_BURUK",
+        "DIARE",
+        "ISPA"
+      ]
+    }
+  ],
+  "drug_availability_summary": {
+    "puskesmas_only": [
+      "OAT",
+      "MgSO4 (injeksi)"
+    ],
+    "puskesmas_dan_posyandu": [
+      "Paracetamol",
+      "Oralit",
+      "Zinc",
+      "Vitamin A",
+      "Tablet Fe",
+      "F-75/F-100"
+    ],
+    "puskesmas_apotek_warung": [
+      "Paracetamol",
+      "CTM",
+      "Amoksisilin"
+    ],
+    "luas_tersedia": [
+      "Paracetamol",
+      "Oralit",
+      "Vitamin A"
+    ]
+  },
+  "kader_safe_drugs": [
+    {
+      "drug_id": "paracetamol",
+      "name": "Paracetamol",
+      "kader_dapat_diberikan": true,
+      "max_dosis_kader": "500 mg untuk orang dewasa, sesuai dosis anak untuk anak",
+      "panduan_pemberian": "Diberikan untuk demam atau nyeri ringan, cek dulu apakah ada alergi",
+      "kondisi_rujuk": [
+        "Demam > 39°C",
+        "Demam disertai gejala lain yang mencurigakan",
+        "Demam > 3 hari tanpa perbaikan"
+      ]
+    },
+    {
+      "drug_id": "oralit",
+      "name": "Oralit",
+      "kader_dapat_diberikan": true,
+      "max_dosis_kader": "50-100 mL/kg BB dalam 4 jam pertama sesuai kebutuhan",
+      "panduan_pemberian": "Berikan sedikit-sedikit tapi sering, jika muntah tunggu 10 menit lalu coba lagi",
+      "kondisi_rujuk": [
+        "Tanda dehidrasi berat (tidak bisa pipis, mata cekung, kulit kering)",
+        "Diare dan muntah terus menerus",
+        "Adanya perdarahan",
+        "Anak lemas sekali atau tidak responsif"
+      ]
+    },
+    {
+      "drug_id": "zinc",
+      "name": "Zinc",
+      "kader_dapat_diberikan": true,
+      "max_dosis_kader": "Anak < 6 bulan: 10 mg/hari; 6 bulan-5 tahun: 20 mg/hari",
+      "panduan_pemberian": "Berikan minimal 10 hari bahkan setelah diare berhenti, diminum 1 jam sebelum makan",
+      "kondisi_rujuk": [
+        "Diare > 1 minggu tanpa perbaikan",
+        "Darah dalam feses",
+        "Tanda dehidrasi"
+      ]
+    },
+    {
+      "drug_id": "vitamin_a",
+      "name": "Vitamin A",
+      "kader_dapat_diberikan": true,
+      "max_dosis_kader": "Sesuai program vaksinasi: anak 1-8 tahun: 100,000 IU saat jadwal; profilaksis: 5,000 IU/hari",
+      "panduan_pemberian": "Berikan saat vaksinasi rutin atau pada kasus diare/infeksi berulang",
+      "kondisi_rujuk": [
+        "Tanda xerofalmia (mata kering, Bitot spot)",
+        "Gangguan penglihatan yang nyata"
+      ]
+    },
+    {
+      "drug_id": "tablet_fe",
+      "name": "Tablet Fe",
+      "kader_dapat_diberikan": true,
+      "max_dosis_kader": "Profilaksis kehamilan: 30-60 mg elemen besi/hari; Anak: sesuai dosis sesuai usia",
+      "panduan_pemberian": "Berikan pada ibu hamil atau anak dengan tanda anemia, diminum dengan vitamin C",
+      "kondisi_rujuk": [
+        "Perdarahan",
+        "Pucat ekstrem dengan gejala lemas berat",
+        "Sesak napas saat aktivitas ringan"
+      ]
+    }
+  ],
+  "catatan_penting": {
+    "resep_requirement": "Obat dengan resep_diperlukan = true hanya bisa diberikan atas rekomendasi/resep petugas kesehatan",
+    "kader_responsibility": "Kader hanya bisa memberikan obat dalam list 'kader_safe_drugs' dan harus merujuk untuk kondisi sesuai kriteria rujukan",
+    "monitoring": "Semua pemberian obat harus didokumentasikan dengan nomor KMS/kartu pasien untuk follow-up",
+    "formularium_reference": "Referensi mengikuti Formularium Nasional Indonesia 2024 dan pedoman dari Kemenkes RI"
+  }
+}
